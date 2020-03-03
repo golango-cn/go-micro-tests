@@ -11,7 +11,7 @@ RUN go get -d -v ./...
 RUN go build -o app
 RUN chmod +x ./app
 
-EXPOSE 5310/tcp
+EXPOSE 12345/tcp
 
 CMD ./app
 
