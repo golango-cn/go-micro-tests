@@ -2,6 +2,8 @@ package handler
 
 import (
 	"context"
+	"strconv"
+	"time"
 
 	log "github.com/micro/go-micro/v2/logger"
 
@@ -13,7 +15,9 @@ type Ccserver struct{}
 // Call is a single request handler called via client.Call or the generated client code
 func (e *Ccserver) Call(ctx context.Context, req *ccserver.Request, rsp *ccserver.Response) error {
 	log.Info("Received Ccserver.Call request")
-	rsp.Msg = "Hello " + req.Name
+	nano := time.Now().UnixNano()
+
+	rsp.Msg = "Hello " + req.Name + "/" + strconv.Itoa(int(nano))
 	return nil
 }
 
