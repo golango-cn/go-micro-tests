@@ -117,6 +117,11 @@ if err != nil {
     return
 }
 ```
+
+#### 启动consul
+```
+consul agent -dev -client 0.0.0.0 -ui
+```
 　
 
 #### 运行服务端
