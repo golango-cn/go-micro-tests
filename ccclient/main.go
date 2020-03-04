@@ -30,6 +30,7 @@ func main() {
 		log.Fatal(err)
 	}
 
+
 	// register html handler
 	service.Handle("/", http.FileServer(http.Dir("html")))
 

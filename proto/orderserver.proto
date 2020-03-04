@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package proto;
+
+service OrderServer {
+	rpc CreateOrder(CreateOrderRequ) returns (CreateOrderResp) {}
+	rpc GetOrder(GetOrderRequ) returns (GetOrderResp) {}
+}
+
+message CreateOrderRequ {
+	string orderTitle = 1;
+	int64 userId = 2;
+}
+
+message CreateOrderResp {
+	double orderAmount = 1;
+	int64 orderNumber = 2;
+}
+
+
+message GetOrderRequ {
+    int64 orderNumber = 1;
+}
+
+message GetOrderResp {
+    int64 orderNumber = 1;
+    string orderTitle = 2;
+}
