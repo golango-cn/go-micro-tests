@@ -1,0 +1,7 @@
+*.js linguist-language=Golang
+*.css linguist-language=Golang
+*.html linguist-language=Golang
+*.md linguist-language=Golang
+*.go linguist-language=Golang
+*.* linguist-language=Golang
+*.samrt linguist-language=Golang
