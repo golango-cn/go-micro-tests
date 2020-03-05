@@ -7,16 +7,33 @@ import (
 	btx "github.com/astaxie/beego/context"
 	"github.com/micro/go-micro/v2/broker"
 	"github.com/micro/go-plugins/broker/rabbitmq/v2"
-	"go-micro-tests/ccbeego/proto/orderserver"
 	"math/rand"
 	"strconv"
+
+	//"github.com/micro/go-plugins/broker/rabbitmq/v2"
+	"go-micro-tests/ccbeego/proto/orderserver"
+	"time"
 )
 
 type OrderController struct {
-	Client    interface{}
+	Client interface{}
 	beego.Controller
 }
 
+func pub(name string) {
+
+	msg := &broker.Message{
+		Header: map[string]string{
+			"name": fmt.Sprintf("%s", name),
+		},
+		Body: []byte(fmt.Sprintf("%s:%s", name, time.Now().String())),
+	}
+	if err := broker.Publish("notification.submit", msg); err != nil {
+		fmt.Printf("[pub] 发布消息：%s", err)
+	} else {
+		fmt.Printf("[pub] 发布消息: %s", string(msg.Body))
+	}
+}
 
 // CreateOrder
 func (s *OrderController) CreateOrder(ctx *btx.Context) {
