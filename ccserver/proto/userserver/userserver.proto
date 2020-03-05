@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package userserver;
+
+service UserServer {
+	rpc Register(RegisterRequ) returns (RegisterResp) {}
+	rpc GetUser(GetUserRequ) returns (GetUserResp) {}
+}
+
+message RegisterRequ {
+    string userName = 1;
+    string userEmail = 2;
+}
+
+message RegisterResp {
+	int64 userId = 1;
+}
+
+
+message GetUserRequ {
+    int64 userId = 1;
+}
+
+message GetUserResp {
+    string userName = 1;
+    string userEmail = 2;
+    int64 userId = 3;
+}
